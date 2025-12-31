@@ -75,6 +75,88 @@
                     <label>Website Tagline:</label>
                     <input type="text" id="edit-tagline" placeholder="Ex: Fresh & Flavourful">
                     <button id="save-tagline-btn" class="secondary-btn full-width">Update Tagline</button>
+					<hr>
+<h3>🍔 Add New Item</h3>
+<input type="text" id="new-food-name" placeholder="Item Name">
+<input type="number" id="new-food-price" placeholder="Price">
+<input type="text" id="new-food-img" placeholder="Image URL">
+<button id="add-food-btn" style="background-color: green; color: white;">+ Add Item</button>
+					<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+        
+        <h3 style="color: #333;">🍔 Add New Menu Item</h3>
+        
+        <input type="text" id="new-food-name" placeholder="Item Name (e.g. Aloo Tikki Burger)" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
+        <input type="number" id="new-food-price" placeholder="Price (e.g. 50)" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
+        <input type="text" id="new-food-img" placeholder="Image URL (Optional)" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
+        <button id="add-food-btn" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer;">
+            + Add Item to Menu
+        </button>
+        ```
+
+---
+
+### Step 2: `script.js` mein Power dalein
+
+Ab hum button mein jaan dalenge taaki wo Firebase se baat kar sake.
+
+1.  **`script.js`** file kholein.
+2.  File ke **bilkul aakhri (end)** mein jayein.
+3.  Yeh code wahan paste kar dein:
+
+```javascript
+/* --- 5. ADMIN POWER: Add Menu Items to Firebase --- */
+
+const addFoodBtn = document.getElementById('add-food-btn');
+const foodNameInput = document.getElementById('new-food-name');
+const foodPriceInput = document.getElementById('new-food-price');
+const foodImgInput = document.getElementById('new-food-img');
+
+if(addFoodBtn) {
+    addFoodBtn.addEventListener('click', () => {
+        // 1. Value uthana
+        const name = foodNameInput.value;
+        const price = foodPriceInput.value;
+        const img = foodImgInput.value;
+
+        // 2. Check karna ki naam aur price khali toh nahi
+        if(name === "" || price === "") {
+            alert("⚠️ Naam aur Price likhna zaroori hai!");
+            return;
+        }
+
+        // 3. Button ko thodi der disable karein (taaki double click na ho)
+        addFoodBtn.innerText = "Saving...";
+        addFoodBtn.disabled = true;
+
+        // 4. Firebase mein data bhejna
+        db.ref('menuItems').push({
+            name: name,
+            price: price,
+            image: img || "https://cdn-icons-png.flaticon.com/512/1046/1046784.png", // Dummy image agar khali ho
+            id: Date.now() // Unique ID
+        })
+        .then(() => {
+            alert("✅ Item Add Ho Gaya!");
+            
+            // Boxes khali karein
+            foodNameInput.value = "";
+            foodPriceInput.value = "";
+            foodImgInput.value = "";
+            
+            // Button wapas normal karein
+            addFoodBtn.innerText = "+ Add Item to Menu";
+            addFoodBtn.disabled = false;
+        })
+        .catch((error) => {
+            alert("Error: " + error.message);
+            addFoodBtn.innerText = "+ Add Item to Menu";
+            addFoodBtn.disabled = false;
+        });
+    });
+}
                 </div>
 
                 <hr class="divider">

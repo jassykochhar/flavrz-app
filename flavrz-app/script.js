@@ -43,7 +43,20 @@ if(closeModal) {
         adminModal.classList.add('hidden');
     });
 }
+const addFoodBtn = document.getElementById('add-food-btn');
+if(addFoodBtn) {
+    addFoodBtn.addEventListener('click', () => {
+        const name = document.getElementById('new-food-name').value;
+        const price = document.getElementById('new-food-price').value;
+        const img = document.getElementById('new-food-img').value;
 
+        if(name === "" || price === "") { alert("Naam aur Price likho!"); return; }
+
+        db.ref('menuItems').push({
+            name: name, price: price, image: img || "https://via.placeholder.com/150", id: Date.now()
+        }).then(() => { alert("? Item Live!"); });
+    });
+}
 window.addEventListener('click', (e) => {
     if (e.target == adminModal) adminModal.classList.add('hidden');
 });
