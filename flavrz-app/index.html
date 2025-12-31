@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAVRZ | New Year Eve Edition</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <nav class="glass-nav">
+        <div class="logo" id="secret-trigger">FLAVRZ<span class="dot">.</span></div>
+        
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#orders">My Orders</a>
+        </div>
+        <div class="nav-actions">
+            <div class="cart-icon">
+                <i class="ri-shopping-bag-3-line"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <button class="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <span class="tagline" id="main-tagline">✨ The Taste of Celebration ✨</span>
+            
+            <h1>Fresh & <br> <span class="gradient-text">Flavourful</span></h1>
+            <p>Experience the finest flavors in town. Pre-orders are now open for the grand night.</p>
+            <div class="cta-group">
+                <button class="primary-btn">Pre-Order Now <i class="ri-arrow-right-line"></i></button>
+                <button class="secondary-btn">View Menu</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="food-card glass-card">
+                <div class="circle-decoration"></div>
+                <h2>Signature <br>Platter</h2>
+                <p>Limited Edition</p>
+                <div class="price">₹1299</div>
+            </div>
+        </div>
+    </header>
+
+    <div id="admin-modal" class="modal-overlay hidden">
+        <div class="modal-content glass-card">
+            <span class="close-modal">&times;</span>
+            
+            <div id="login-view">
+                <h2 class="gold-text">Admin Access</h2>
+                <p>Enter Security Code</p>
+                <input type="password" id="admin-pass" placeholder="••••" maxlength="6">
+                <button id="login-btn" class="primary-btn full-width">Unlock System</button>
+                <p id="login-msg" class="error-msg"></p>
+            </div>
+
+            <div id="dashboard-view" class="hidden">
+                <h3 class="gold-text">Control Center</h3>
+                <p class="status-text">✅ System Connected</p>
+                <hr class="divider">
+                
+                <div class="control-group">
+                    <label>Website Tagline:</label>
+                    <input type="text" id="edit-tagline" placeholder="Ex: Fresh & Flavourful">
+                    <button id="save-tagline-btn" class="secondary-btn full-width">Update Tagline</button>
+                </div>
+
+                <hr class="divider">
+                <button class="primary-btn full-width" style="margin-top:10px;">Manage Menu Items</button>
+                <button class="secondary-btn full-width" style="margin-top:10px; border-color: red; color: red;">Logout</button>
+            </div>
+        </div>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    <script src="script.js"></script>
+</body>
+</html>

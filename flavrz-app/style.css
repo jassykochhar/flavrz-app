@@ -1,0 +1,317 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-color: #050505; /* Deepest Black */
+    --text-color: #ffffff;
+    --accent-color: #ffb400; /* Premium Gold */
+    --primary-gradient: linear-gradient(135deg, #ffb400, #ff5e00);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- Background Glow Effect --- */
+.glow-bg {
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(255, 94, 0, 0.15), transparent 70%);
+    filter: blur(100px);
+    z-index: -1;
+}
+
+/* --- Navigation (Glassmorphism) --- */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+}
+
+/* --- Logo Updates (Fix for Clicking) --- */
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+    /* Ye naya hai: Text select hone se rokega */
+    user-select: none; 
+    -webkit-user-select: none;
+    position: relative;
+    z-index: 1001; /* Sabse upar */
+}
+
+.dot { 
+    color: var(--accent-color);
+    cursor: pointer;
+    
+    /* Ye trick hai: Dot ka click area badhane ke liye */
+    padding: 10px;
+    margin: -10px;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: var(--accent-color);
+    color: #000;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.login-btn {
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: var(--glass-bg);
+    border-color: var(--accent-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.cta-group { display: flex; gap: 1rem; }
+
+.primary-btn {
+    padding: 1rem 2rem;
+    background: var(--primary-gradient);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 94, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.primary-btn:hover { transform: translateY(-3px); }
+
+.secondary-btn {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.secondary-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* Visual / Floating Card */
+.hero-visual {
+    position: relative;
+}
+
+.glass-card {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+    transform: rotate(-5deg);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.circle-decoration {
+    width: 150px;
+    height: 150px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 0 30px rgba(255, 180, 0, 0.4);
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 1rem;
+}
+/* --- Admin Modal (Hidden) --- */
+.hidden { display: none !important; }
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 350px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 50px rgba(255, 180, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: #fff;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.modal-content input:focus { border-color: var(--accent-color); }
+.gold-text { color: var(--accent-color); font-family: var(--font-heading); }
+.full-width { width: 100%; }
+.error-msg { color: red; margin-top: 10px; font-size: 0.9rem; min-height: 20px;}
+/* --- Admin Dashboard Styles --- */
+.divider {
+    border: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 1.5rem 0;
+}
+
+.status-text {
+    color: #00ff00;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.control-group {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#dashboard-view button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+}
